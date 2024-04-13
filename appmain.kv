@@ -1,0 +1,1538 @@
+ScreenManager:
+    MainMenu
+    SetUpScreen:
+    GameScreen:
+
+<Button>:
+    font_size: 40
+    size_hint: 0.1, 0.45
+
+<RoundButton>:
+    size_hint: 0.1 * 1.27, 0.045 * 1.27
+    font_color: 0, 0, 0, 0
+    background_color: 0, 0, 0, 0
+    on_press: root.buttonPressed()
+    on_release: root.buttonReleased()
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle: 90
+            origin: self.center
+    canvas.after:
+        PopMatrix
+
+    Image:
+        id: round_button_texture
+        allow_stretch: True
+        source: 'textures/buttons/roundbutton_redorange_up.png'
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
+
+<RoundRecButton>
+    font_color: 0, 0, 0, 0
+    background_color: 0, 0, 0, 1
+    size_hint: 0.035 * 4.2, 0.045 * 4.2
+
+    Image:
+        id: roundrec_button_texture
+        source: 'textures/buttons/roundrecbutton_redorange_up_ver.png'
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
+
+<RoundRecButtonSub>
+    size_hint: 0.035 * 4.2, 0.045 * 4.2
+    font_color: 0, 0, 0, 0
+    background_color: 0, 0, 0, 1
+    on_press: root.buttonPressed()
+    on_release: root.buttonReleased()
+    
+    Image:
+        id: roundrec_button_texture
+        source: 'textures/buttons/roundrecbutton_redorange_up_ver.png'
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
+
+<OvalButtonRed>
+    size_hint: 0.1 * 4.2, 0.0125 * 4.2
+    font_color: 0, 0, 0, 0
+    background_color: 0, 0, 0, 0
+    on_press: root.buttonPressed()
+    on_release: root.buttonReleased()
+
+    Image:
+        id: oval_button_red_texture
+        source: 'textures/buttons/ovalbutton_red_up.png'
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
+
+<OvalButtonBlue>
+    size_hint: 0.1 * 4.2, 0.0125 * 4.2
+    font_color: 0, 0, 0, 0
+    background_color: 0, 0, 0, 0
+    on_press: root.buttonPressed()
+    on_release: root.buttonReleased()
+
+    Image:
+        id: oval_button_blue_texture
+        source: 'textures/buttons/ovalbutton_blue_up.png'
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
+
+<RoundButtonGuess>:
+    size_hint: 0.1 * 1.2, 0.045 * 1.2
+    font_color: 0, 0, 0, 0
+    background_color: 0, 0, 0, 0
+    on_press: root.buttonPressed()
+    on_release: root.buttonReleased()
+
+    Image:
+        id: round_button_texture
+        allow_stretch: True
+        source: 'textures/buttons/roundbutton_redorange_up.png'
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
+
+<RoundRecButtonGuess>
+    size_hint: 0.1 * 3, 0.015 * 3
+    font_color: 0, 0, 0, 0
+    background_color: 0, 0, 0, 0
+    on_press: root.buttonPressed()
+    on_release: root.buttonReleased()
+
+    Image:
+        id: roundrec_button_texture
+        allow_stretch: True
+        source: 'textures/buttons/roundrecbutton_redorange_up_hor.png'
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
+
+<MainMenu>:
+    name: "menu"
+
+    Image:
+        source: 'textures/background/bg_menu.png'
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 2.23, 1
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        source: 'textures/logo/logo_1.png'
+        pos_hint: {"center_x": 0.25, "center_y": 0.5}
+        allow_stretch: True
+        size_hint: 0.5, 0.5
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    RoundRecButton
+        on_press: root.start()
+        pos_hint: {"center_x": 0.6, "center_y": 0.5}
+        size_hint: 0.035 * 5.2, 0.045 * 5.2
+        Image:
+            id: round_button_texture
+            source: 'textures/labels_black/start.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size    
+
+    RoundRecButton
+        opacity: 0.4
+        disabled: True
+        pos_hint: {"center_x": 0.8, "center_y": 0.5}
+        size_hint: 0.035 * 5.2, 0.045 * 5.2
+        Image:
+            id: round_button_texture
+            source: 'textures/labels_black/how_to_play.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size    
+
+<SetUpScreen>:
+    name: "setup"
+    
+    Image:
+        source: 'textures/background/bg_setup.png'
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 2.23, 1
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image: 
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.41, "center_y": 0.365}
+        size_hint: 0.17, 0.17
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image: 
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.41, "center_y": 0.455}
+        size_hint: 0.17, 0.17
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image: 
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.41, "center_y": 0.545}
+        size_hint: 0.17, 0.17
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image: 
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.41, "center_y": 0.635}
+        size_hint: 0.17, 0.17
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: teamturn
+        source: 'textures/letter_and_box/your_combination_p1.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.15, "center_y": 0.5}
+        size_hint: 1.2, 1.2
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: combinum_0
+        text: "0"
+        color: 0, 0, 0, 1
+        font_name: 'fonts\SulphurPoint-Regular.ttf'
+        font_size: 22
+        pos_hint: {"center_x": 0.405, "center_y": 0.3625}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: combinum_1
+        text: "0"
+        color: 0, 0, 0, 1
+        font_name: 'fonts\SulphurPoint-Regular.ttf'
+        font_size: 22
+        pos_hint: {"center_x": 0.405, "center_y": 0.4525}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: combinum_2
+        text: "0"
+        color: 0, 0, 0, 1
+        font_name: 'fonts\SulphurPoint-Regular.ttf'
+        font_size: 22
+        pos_hint: {"center_x": 0.405, "center_y": 0.5425}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: combinum_3
+        text: "0"
+        color: 0, 0, 0, 1
+        font_name: 'fonts\SulphurPoint-Regular.ttf'
+        font_size: 22
+        pos_hint: {"center_x": 0.405, "center_y": 0.6325}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        text: "A"
+        color: 0, 0, 0, 1
+        font_name: 'fonts\LondrinaSolid-Regular.ttf'
+        font_size: 18
+        pos_hint: {"center_x": 0.53, "center_y": 0.365}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        text: "B"
+        color: 0, 0, 0, 1
+        font_name: 'fonts\LondrinaSolid-Regular.ttf'
+        font_size: 18
+        pos_hint: {"center_x": 0.53, "center_y": 0.455}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        text: "C"
+        color: 0, 0, 0, 1
+        font_name: 'fonts\LondrinaSolid-Regular.ttf'
+        font_size: 18
+        pos_hint: {"center_x": 0.53, "center_y": 0.545}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        text: "D"
+        color: 0, 0, 0, 1
+        font_name: 'fonts\LondrinaSolid-Regular.ttf'
+        font_size: 18
+        pos_hint: {"center_x": 0.53, "center_y": 0.635}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: warning
+        text: " "
+        font_size: 15
+        font_name: 'fonts\SulphurPoint-Regular.ttf'
+        color: 1, 0.2, 0.2, 1
+        pos_hint: {"center_x": 0.5, "center_y": 0.55}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: total
+        text: ""
+        font_size: 30
+        color: 0.8, 0.8, 0.8, 0
+        pos_hint: {"center_x": 0.77, "center_y": 0.6}
+
+    RoundButton:
+        on_press: root.enternumber(1)
+        pos_hint: {"center_x": 0.65, "center_y": 0.35}
+        Image:
+            source: 'textures/numbers_black/1.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.enternumber(2)
+        pos_hint: {"center_x": 0.65, "center_y": 0.425}
+        Image:
+            source: 'textures/numbers_black/2.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.enternumber(3)
+        pos_hint: {"center_x": 0.65, "center_y": 0.5}
+        Image:
+            source: 'textures/numbers_black/3.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.enternumber(4)
+        pos_hint: {"center_x": 0.65, "center_y": 0.575}
+        Image:
+            source: 'textures/numbers_black/4.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.enternumber(5)
+        pos_hint: {"center_x": 0.65, "center_y": 0.65}
+        Image:
+            source: 'textures/numbers_black/5.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.enternumber(6)
+        pos_hint: {"center_x": 0.79, "center_y": 0.35}
+        Image:
+            source: 'textures/numbers_black/6.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.enternumber(7)
+        pos_hint: {"center_x": 0.79, "center_y": 0.425}
+        Image:
+            source: 'textures/numbers_black/7.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.enternumber(8)
+        pos_hint: {"center_x": 0.79, "center_y": 0.5}
+        Image:
+            source: 'textures/numbers_black/8.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.enternumber(9)
+        pos_hint: {"center_x": 0.79, "center_y": 0.575}
+        Image:
+            source: 'textures/numbers_black/9.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButton:
+        on_press: root.erase(0)
+        pos_hint: {"center_x": 0.79, "center_y": 0.65}
+        Image:
+            source: 'textures/labels_black/erase.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundRecButtonSub:
+        on_press: root.enterProceed()
+        pos_hint: {"center_x": 0.85, "center_y": 0.88}
+        Image:
+            id: round_button_texture
+            source: 'textures/labels_black/submit_ver.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size    
+
+<GameScreen>:
+    name: "game"
+    
+    Image:
+        source: 'textures/background/bg_game.png'
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 2.23, 1
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image: 
+        source: 'textures/labels_black/player_1.png'
+        size_hint: 0.4, 0.4
+        pos_hint: {"center_x": 0.23, "center_y": 0.032}
+
+    Image: 
+        source: 'textures/labels_black/player_2.png'
+        size_hint: 0.4, 0.4
+        pos_hint: {"center_x": 0.77, "center_y": 0.968}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        source: 'textures/letter_and_box/game_box_player1.png'
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 0.88, 0.25
+        pos_hint: {"center_x": 0.5, "center_y": 0.36}
+
+    Image:
+        source: 'textures/letter_and_box/game_box_player2.png'
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 0.88, 0.25
+        pos_hint: {"center_x": 0.5, "center_y": 0.64}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: mycombi_0_1
+        source: 'textures/letter_and_box/a_1.png'
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.58, "center_y": 0.032}
+
+    Image:
+        id: mycombi_1_1
+        source: 'textures/letter_and_box/b_1.png'
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.69, "center_y": 0.032}
+
+    Image:
+        id: mycombi_2_1
+        source: 'textures/letter_and_box/c_1.png'
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.8, "center_y": 0.032}
+
+    Image:
+        id: mycombi_3_1
+        source: 'textures/letter_and_box/d_1.png'
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.91, "center_y": 0.032}
+
+    Image:
+        id: mycombi_0_2
+        source: 'textures/letter_and_box/a_2.png'
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.42, "center_y": 0.968}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: mycombi_1_2
+        source: 'textures/letter_and_box/b_2.png'
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.31, "center_y": 0.968}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: mycombi_2_2
+        source: 'textures/letter_and_box/c_2.png'
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.2, "center_y": 0.968}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: mycombi_3_2
+        source: 'textures/letter_and_box/d_2.png'
+        size_hint: 0.1, 0.1
+        pos_hint: {"center_x": 0.09, "center_y": 0.968}
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    OvalButtonBlue:
+        id: clue_button_1
+        opacity: 1
+        on_press: root.clueAccess(1)
+        pos_hint: {"center_x": 0.5, "center_y": 0.13}
+
+        Image:
+            source: 'textures/labels_black/compare.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+    
+    OvalButtonBlue:
+        id: see_combi_1
+        pos_hint: {"center_x": 0.74, "center_y": 0.2}
+        on_press: root.seeCombination(1)
+
+        Image:
+            id: view_combination_1
+            source: 'textures/labels_black/view_combination.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    OvalButtonBlue:
+        id: guess_1
+        on_press: root.guessTeam1(True, False)
+        pos_hint: {"center_x": 0.26, "center_y": 0.2}
+
+        Image:
+            source: 'textures/labels_black/guess_combination.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    OvalButtonRed:
+        id: clue_button_2
+        opacity: 0.6
+        on_press: root.clueAccess(2)
+        pos_hint: {"center_x": 0.5, "center_y": 0.87}
+     
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+        Image:
+            source: 'textures/labels_black/compare.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    OvalButtonRed:
+        id: see_combi_2
+        pos_hint: {"center_x": 0.74, "center_y": 0.8}
+        on_press: root.seeCombination(2)
+
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+        Image:
+            id: view_combination_2
+            source: 'textures/labels_black/view_combination.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    OvalButtonRed:
+        id: guess_2
+        on_press: root.guessTeam2(True, False)
+        pos_hint: {"center_x": 0.26, "center_y": 0.8}
+
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+        Image:
+            source: 'textures/labels_black/guess_combination.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    Label:
+        id: combi_1
+        text: " "
+        font_size: 17
+        color: 0, 0, 0, 1
+        font_name: 'fonts/SulphurPoint-Bold.ttf'
+        pos_hint: {"center_x": 0.745, "center_y": 0.03225}
+        halign: "center"
+
+    Label:
+        id: combi_2
+        text: " "
+        font_size: 17
+        color: 0, 0, 0, 1
+        font_name: 'fonts/SulphurPoint-Bold.ttf'
+        pos_hint: {"center_x": 0.255, "center_y": 0.96775}
+        halign: "center"
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: element_team1
+        source: ''
+        opacity: 0
+        pos_hint: {"center_x": 0.5, "center_y": 0.36}
+        size_hint: 0.3, 0.3
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix   
+
+    Image:
+        id: element_team2
+        source: ''
+        opacity: 0
+        pos_hint: {"center_x": 0.5, "center_y": 0.64}
+        size_hint: 0.3, 0.3
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix        
+
+    Image:
+        id: compare_indicator
+        source: ''
+        opacity: 0
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        size_hint: 0.15, 0.15
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: guess_team1_box
+        source: 'textures/letter_and_box/guessing_box.png'
+        allow_stretch: True
+        keep_ratio: False
+        pos_hint: {"center_x": 0.5, "center_y": 0.275}
+        size_hint: 0.94, 0.4
+        opacity: 0
+
+    RoundButtonGuess:
+        id: guess_team1_1
+        pos_hint: {"center_x": 0.22, "center_y": 0.23}
+        on_press: root.enternumber(1, 1)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/1.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_2
+        pos_hint: {"center_x": 0.36, "center_y": 0.23}
+        on_press: root.enternumber(1, 2)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/2.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_3
+        pos_hint: {"center_x": 0.5, "center_y": 0.23}
+        on_press: root.enternumber(1, 3)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/3.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_4
+        pos_hint: {"center_x": 0.64, "center_y": 0.23}
+        on_press: root.enternumber(1, 4)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/4.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_5
+        pos_hint: {"center_x": 0.78, "center_y": 0.23}
+        on_press: root.enternumber(1, 5)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/5.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_6
+        pos_hint: {"center_x": 0.22, "center_y": 0.17}
+        on_press: root.enternumber(1, 6)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/6.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_7
+        pos_hint: {"center_x": 0.36, "center_y": 0.17}
+        on_press: root.enternumber(1, 7)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/7.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_8
+        pos_hint: {"center_x": 0.5, "center_y": 0.17}
+        on_press: root.enternumber(1, 8)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/8.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_9
+        pos_hint: {"center_x": 0.64, "center_y": 0.17}
+        on_press: root.enternumber(1, 9)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/9.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team1_0
+        pos_hint: {"center_x": 0.78, "center_y": 0.17}
+        on_press: root.enternumber(1, 0)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/numbers_black/0.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess: 
+        id: guess_team1_selectLeft
+        pos_hint: {"center_x": 0.15, "center_y": 0.3175}
+        on_press: root.guessMoveLeft(1)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/labels_black/move_left.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess: 
+        id: guess_team1_selectRight
+        pos_hint: {"center_x": 0.85, "center_y": 0.3175}
+        on_press: root.guessMoveRight(1)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            source: 'textures/labels_black/move_right.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    Button: 
+        id: guess_team1_back
+        background_color: 0, 0, 0, 0
+        pos_hint: {"center_x": 0.9, "center_y": 0.46}
+        size_hint: 0.1 * 1.2, 0.045 * 1.2
+        on_press: root.guessTeam1(False, False)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            allow_stretch: True
+            source: 'textures/buttons/exit.png'    
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundRecButtonGuess: 
+        id: guess_team1_enter
+        pos_hint: {"center_x": 0.5, "center_y": 0.112}
+        on_press: root.guessEnter(1)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            id: round_button_texture
+            source: 'textures/labels_black/submit_hor.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size    
+
+    Image
+        id: guess_team1_label
+        source: 'textures/labels_black/guess_combination.png'
+        allow_stretch: True
+        size_hint: 0.7, 0.7
+        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        opacity: 0
+
+    Image:
+        id: guess_team1_combi_box_0
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.3, "center_y": 0.3175}
+        opacity: 0
+        size_hint: 0.12, 0.12
+
+    Image:
+        id: guess_team1_combi_box_1
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.433, "center_y": 0.3175}
+        opacity: 0
+        size_hint: 0.12, 0.12
+
+    Image:
+        id: guess_team1_combi_box_2
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.567, "center_y": 0.3175}
+        opacity: 0
+        size_hint: 0.12, 0.12
+
+    Image:
+        id: guess_team1_combi_box_3
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.7, "center_y": 0.3175}
+        opacity: 0
+        size_hint: 0.12, 0.12
+
+    Label:
+        id: guess_team1_combination
+        text: " "
+        color: 0, 0, 0, 1
+        font_name: 'fonts/SulphurPoint-Bold.ttf'
+        font_size: 20
+        pos_hint: {"center_x": 0.5, "center_y": 0.32}
+        opacity: 0
+
+    Label:
+        id: guess_team1_select
+        text: " "
+        color: 0, 0, 0, 1
+        font_name: 'fonts/SulphurPoint-Bold.ttf'
+        halign: 'center'
+        font_size: 28
+        pos_hint: {"center_x": 0.5, "center_y": 0.32}
+        opacity: 0
+
+    Label:
+        id: wrongGuess_team1
+        text: "The combination doesn't match."
+        font_size: 17
+        color: 1, 0.2, 0.2, 1
+        pos_hint: {"center_x": 0.24, "center_y": 0.5}
+        opacity: 0
+
+    Image:
+        id: guess_team2_box
+        source: 'textures/letter_and_box/guessing_box.png'
+        allow_stretch: True
+        keep_ratio: False
+        pos_hint: {"center_x": 0.5, "center_y": 0.725}
+        size_hint: 0.94, 0.4
+        opacity: 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    RoundButtonGuess:
+        id: guess_team2_1
+        pos_hint: {"center_x": 0.78, "center_y": 0.77}
+        on_press: root.enternumber(2, 1)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/1.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_2
+        pos_hint: {"center_x": 0.64, "center_y": 0.77}
+        on_press: root.enternumber(2, 2)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/2.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_3
+        pos_hint: {"center_x": 0.5, "center_y": 0.77}
+        on_press: root.enternumber(2, 3)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/3.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_4
+        pos_hint: {"center_x": 0.36, "center_y": 0.77}
+        on_press: root.enternumber(2, 4)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/4.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_5
+        pos_hint: {"center_x": 0.22, "center_y": 0.77}
+        on_press: root.enternumber(2, 5)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/5.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_6
+        pos_hint: {"center_x": 0.78, "center_y": 0.83}
+        on_press: root.enternumber(2, 6)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/6.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_7
+        pos_hint: {"center_x": 0.64, "center_y": 0.83}
+        on_press: root.enternumber(2, 7)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/7.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_8
+        pos_hint: {"center_x": 0.5, "center_y": 0.83}
+        on_press: root.enternumber(2, 8)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/8.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_9
+        pos_hint: {"center_x": 0.36, "center_y": 0.83}
+        on_press: root.enternumber(2, 9)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/9.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess:
+        id: guess_team2_0
+        pos_hint: {"center_x": 0.22, "center_y": 0.83}
+        on_press: root.enternumber(2, 0)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/numbers_black/0.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess: 
+        id: guess_team2_selectLeft
+        pos_hint: {"center_x": 0.85, "center_y": 0.6825}
+        on_press: root.guessMoveLeft(2)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/labels_black/move_left.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundButtonGuess: 
+        id: guess_team2_selectRight
+        pos_hint: {"center_x": 0.15, "center_y": 0.6825}
+        on_press: root.guessMoveRight(2)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            source: 'textures/labels_black/move_right.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    Button: 
+        id: guess_team2_back
+        background_color: 0, 0, 0, 0
+        pos_hint: {"center_x": 0.1, "center_y": 0.54}
+        size_hint: 0.1 * 1.3, 0.045 * 1.3
+        on_press: root.guessTeam2(False, False)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            allow_stretch: True
+            source: 'textures/buttons/exit.png'    
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size
+
+    RoundRecButtonGuess: 
+        id: guess_team2_enter
+        pos_hint: {"center_x": 0.5, "center_y": 0.888}
+        on_press: root.guessEnter(2)
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+        Image:
+            id: round_button_texture
+            source: 'textures/labels_black/submit_hor.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size    
+
+    Image
+        id: guess_team2_label
+        source: 'textures/labels_black/guess_combination.png'
+        allow_stretch: True
+        size_hint: 0.7, 0.7
+        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+        opacity: 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: guess_team2_combi_box_0
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.7, "center_y": 0.6825}
+        opacity: 0
+        size_hint: 0.12, 0.12
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: guess_team2_combi_box_1
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.567, "center_y": 0.6825}
+        opacity: 0
+        size_hint: 0.12, 0.12
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: guess_team2_combi_box_2
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.433, "center_y": 0.6825}
+        opacity: 0
+        size_hint: 0.12, 0.12
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: guess_team2_combi_box_3
+        source: 'textures/letter_and_box/box_square_gray.png'
+        allow_stretch: True
+        pos_hint: {"center_x": 0.3, "center_y": 0.6825}
+        opacity: 0
+        size_hint: 0.12, 0.12
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: guess_team2_combination
+        text: " "
+        color: 0, 0, 0, 1
+        font_name: 'fonts/SulphurPoint-Bold.ttf'
+        font_size: 20
+        pos_hint: {"center_x": 0.5, "center_y": 0.68}
+        opacity: 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: guess_team2_select
+        text: " "
+        color: 0, 0, 0, 1
+        font_name: 'fonts/SulphurPoint-Bold.ttf'
+        font_size: 28
+        pos_hint: {"center_x": 0.5, "center_y": 0.68}
+        opacity: 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Label:
+        id: wrongGuess_team2
+        text: "The combination doesn't match."
+        font_size: 17
+        color: 1, 0.2, 0.2, 1
+        pos_hint: {"center_x": 0.76, "center_y": 0.5}
+        opacity: 0
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 180
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: winner_bg
+        source: 'textures/background/bg_black.png'
+        opacity: 0
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 2.23, 1
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: winner_icon
+        source: 'textures/other_icons/winner_trophy.png'
+        opacity: 0
+        pos_hint: {"center_x": 0.22, "center_y": 0.5}
+        allow_stretch: True
+        size_hint: 0.35, 0.35
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+    Image:
+        id: winner_label
+        source: 'textures/labels_black/winner_player_1.png'
+        opacity: 0
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        allow_stretch: True
+        size_hint: 0.75, 0.75
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 90
+                origin: self.center
+        canvas.after:
+            PopMatrix
+    
+    RoundRecButton:
+        id: play_again_button
+        on_press: root.playAgain()
+        opacity: 0
+        disabled: True
+        pos_hint: {"center_x": 0.7, "center_y": 0.5}
+        size_hint: 0, 0
+        Image:
+            id: round_button_texture
+            source: 'textures/labels_black/play_again.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size   
+
+    RoundRecButton:
+        id: home_screen_button
+        on_press: root.homeScreen()
+        pos_hint: {"center_x": 0.86, "center_y": 0.5}
+        opacity: 0
+        disabled: True
+        size_hint: 0, 0
+        Image:
+            id: round_button_texture
+            source: 'textures/labels_black/home.png'
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+            size: self.parent.size     
